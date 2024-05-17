@@ -38,7 +38,7 @@ const Main = () => {
 
   const listData = (e: any) => {
     let newList = [...bdata.list];
-    newList.push({ id: newList.length + 1 + "", title: e, items: [] });
+    newList.push({ id: (newList.length + 1).toString(), title: e, items: [] });
 
     let board_ = { ...allboard };
     board_.boards[board_.active].list = newList;
@@ -54,11 +54,11 @@ const Main = () => {
         <h2 className="text-lg">{bdata.name}</h2>
         <div className="flex items-center justify-center">
           <button className="bg-gray-200 h-8 text-gray-800 px-2 py-1 mr-2 rounded flex justify-center items-center">
-            <UserPlus size={16} className="mr-2"></UserPlus>
+            <UserPlus size={16} className="mr-2" />
             Share
           </button>
           <button className="hover:bg-gray-500 px-2 py-1 h-8 rounded">
-            <MoreHorizontal size={16}></MoreHorizontal>
+            <MoreHorizontal size={16} />
           </button>
         </div>
       </div>
@@ -76,11 +76,11 @@ const Main = () => {
                       <div className="flex justify-between p-1">
                         <span>{x.title}</span>
                         <button className="hover:bg-gray-500 p-1 rounded-sm">
-                          <MoreHorizontal size={16}></MoreHorizontal>
+                          <MoreHorizontal size={16} />
                         </button>
                       </div>
                       <Droppable droppableId={x.id}>
-                        {({ provided, snapshot }: any) => (
+                        {(provided, snapshot) => (
                           <div
                             className="py-1"
                             ref={provided.innerRef}
@@ -99,7 +99,7 @@ const Main = () => {
                                     draggableId={item.id}
                                     index={index}
                                   >
-                                    {(provided: any, snapshot: any) => (
+                                    {(provided, snapshot) => (
                                       <div
                                         ref={provided.innerRef}
                                         {...provided.draggableProps}
@@ -109,7 +109,7 @@ const Main = () => {
                                           <span>{item.title}</span>
                                           <span className="flex justify-start items-start">
                                             <button className="hover:bg-gray-600 p-1 rounded-sm">
-                                              <Edit2 size={16}></Edit2>
+                                              <Edit2 size={16} />
                                             </button>
                                           </span>
                                         </div>
@@ -126,14 +126,14 @@ const Main = () => {
 
                       <AddCard
                         getcard={(e: any, ind: any) => cardData(e, ind)}
-                      ></AddCard>
+                      />
                     </div>
                   </div>
                 );
               })}
           </DragDropContext>
 
-          <AddList getlist={(e: any) => listData(e)}></AddList>
+          <AddList getlist={(e: any) => listData(e)} />
         </div>
       </div>
     </div>
